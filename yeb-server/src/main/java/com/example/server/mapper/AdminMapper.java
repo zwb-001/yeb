@@ -5,12 +5,11 @@ import com.example.server.pojo.Admin;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
  * @author zhou
  * @since 2021-11-04
  */
 public interface AdminMapper extends BaseMapper<Admin> {
-
 }
