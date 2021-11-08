@@ -26,7 +26,7 @@ public class CustomUrlDecisionManager implements AccessDecisionManager {
             if ("ROLE_LOGIN".equals(needRole)) {
                 //判断是否登录
                 if (authentication instanceof AnonymousAuthenticationToken) {
-                    throw new AccessDeniedException("尚未登录，请登录!");
+                    throw new AccessDeniedException("您还未登录，请登录!");
                 } else {
                     return;
                 }

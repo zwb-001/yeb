@@ -20,7 +20,7 @@ import java.util.List;
  * @since 2021-11-04
  */
 @RestController
-@RequestMapping("/system/config")
+@RequestMapping("/system/cfg")
 public class MenuController {
     @Autowired
     private IMenuService menuService;
