@@ -27,7 +27,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
     @Autowired
     private MenuMapper menuMapper;
     @Autowired
-    private RedisTemplate redisTemplate;
+    private RedisTemplate<String,Object> redisTemplate;
     /**
      * 通过用户id查询菜单列表
      * @return

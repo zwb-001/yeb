@@ -66,7 +66,7 @@ public class Admin implements Serializable, UserDetails {
     @ApiModelProperty(value = "备注")
     private String remark;
 
-    @ApiModelProperty(value = "权限")
+    @ApiModelProperty(value = "角色")
     @TableField(exist = false)
     private List<Role> roles;
 
@@ -75,7 +75,8 @@ public class Admin implements Serializable, UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<SimpleGrantedAuthority> authorities = roles
                 .stream()
-                .map(role -> new SimpleGrantedAuthority(role.getName())) .collect(Collectors.toList());
+                .map(role -> new SimpleGrantedAuthority(role.getName()))
+                .collect(Collectors.toList());
         return authorities;
     }
 
