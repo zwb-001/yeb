@@ -45,7 +45,7 @@ public class Swagger2Config {
     private List<ApiKey> securitySchemes() {
         //设置请求头信息
         List<ApiKey> result = new ArrayList<>();
-        ApiKey apiKey = new ApiKey("Authorization", "Authorization", "Header");
+        ApiKey apiKey = new ApiKey("Authorization","Authorization","Header");
         result.add(apiKey);
         return result;
     }

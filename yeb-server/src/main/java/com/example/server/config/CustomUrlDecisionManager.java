@@ -17,24 +17,21 @@ import java.util.Collection;
 @Component
 public class CustomUrlDecisionManager implements AccessDecisionManager {
     @Override
-    public void decide(Authentication authentication, Object object, Collection<ConfigAttribute> configAttributes)
-            throws AccessDeniedException, InsufficientAuthenticationException {
+    public void decide(Authentication authentication, Object object, Collection<ConfigAttribute> configAttributes) throws AccessDeniedException, InsufficientAuthenticationException {
         for (ConfigAttribute configAttribute : configAttributes) {
             //当前url所需角色
             String needRole = configAttribute.getAttribute();
-            //判断角色是否为登录即可访问的角色，此角色在CustomFilter中设置
+            //判断角色是否登录即可访问的角色，此角色在CustomFilter中设置
             if ("ROLE_LOGIN".equals(needRole)) {
                 //判断是否登录
                 if (authentication instanceof AnonymousAuthenticationToken) {
-                    throw new AccessDeniedException("您还未登录，请登录!");
+                    throw new AccessDeniedException("尚未登录，请登录!");
                 } else {
                     return;
                 }
-
             }
             //判断用户角色是否为url所需角色
-            Collection<? extends GrantedAuthority> authorities =
-                    authentication.getAuthorities();
+            Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
             for (GrantedAuthority authority : authorities) {
                 if (authority.getAuthority().equals(needRole)) {
                     return;
@@ -43,8 +40,8 @@ public class CustomUrlDecisionManager implements AccessDecisionManager {
         }
         throw new AccessDeniedException("权限不足，请联系管理员!");
     }
-    @Override
 
+    @Override
     public boolean supports(ConfigAttribute attribute) {
         return true;
     }

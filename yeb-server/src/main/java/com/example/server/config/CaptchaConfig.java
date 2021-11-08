@@ -10,18 +10,19 @@ import java.util.Properties;
 @Configuration
 public class CaptchaConfig {
     @Bean
-    public DefaultKaptcha getDefaultKaptcha() {
+    public DefaultKaptcha defaultKaptcha(){
         //验证码生成器
-        DefaultKaptcha defaultKaptcha = new DefaultKaptcha();
+        DefaultKaptcha defaultKaptcha=new DefaultKaptcha();
         //配置
         Properties properties = new Properties();
         //是否有边框
-        properties.setProperty("kaptcha.border", "yes"); //设置边框颜色
+        properties.setProperty("kaptcha.border", "yes");
+        //设置边框颜色
         properties.setProperty("kaptcha.border.color", "105,179,90");
         //边框粗细度，默认为1
-        //properties.setProperty("kaptcha.border.thickness", "1");
+        // properties.setProperty("kaptcha.border.thickness","1");
         //验证码
-        properties.setProperty("kaptcha.session.key", "code");
+        properties.setProperty("kaptcha.session.key","code");
         //验证码文本字符颜色 默认为黑色
         properties.setProperty("kaptcha.textproducer.font.color", "blue");
         //设置字体样式
@@ -29,7 +30,7 @@ public class CaptchaConfig {
         //字体大小，默认40
         properties.setProperty("kaptcha.textproducer.font.size", "30");
         //验证码文本字符内容范围 默认为abced2345678gfynmnpwx
-        //properties.setProperty("kaptcha.textproducer.char.string", "");
+        // properties.setProperty("kaptcha.textproducer.char.string", "");
         //字符长度，默认为5
         properties.setProperty("kaptcha.textproducer.char.length", "4");
         //字符间距 默认为2

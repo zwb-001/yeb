@@ -16,14 +16,14 @@ import java.io.PrintWriter;
  * 当未登录或者token失效时访问接口时，自定的返回结果
  */
 @Component
-public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
+public class RestAuthorizationEntryPoint implements AuthenticationEntryPoint {
 
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
-        RespBean bean = RespBean.error("尚未登录，请登录!");
+        RespBean bean = RespBean.error("尚未登录，请登录！");
         bean.setCode(401);
         out.write(new ObjectMapper().writeValueAsString(bean));
         out.flush();
